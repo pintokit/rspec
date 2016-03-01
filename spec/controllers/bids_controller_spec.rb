@@ -24,11 +24,11 @@ RSpec.describe BidsController, type: :controller do
   # Bid. As you add validations to Bid, be sure to
   # adjust the attributes here as well.
   let(:valid_attributes) {
-    skip({is_interested: false})
+    skip("Add a hash of attributes valid for your model")
   }
 
   let(:invalid_attributes) {
-    skip({is_interested: 'hello'})
+    skip("Add a hash of attributes invalid for your model")
   }
 
   # This should return the minimal set of values that should be in the session
