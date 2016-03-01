@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160301202835) do
+ActiveRecord::Schema.define(version: 20160301202902) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -62,5 +62,31 @@ ActiveRecord::Schema.define(version: 20160301202835) do
     t.datetime "updated_at",            null: false
   end
 
+  create_table "users", force: :cascade do |t|
+    t.integer  "company_id",                 default: 1, null: false
+    t.string   "first_name",     limit: 30,              null: false
+    t.string   "last_name",      limit: 30,              null: false
+    t.string   "title",          limit: 50
+    t.string   "address_1",      limit: 100
+    t.string   "address_2",      limit: 50
+    t.string   "city"
+    t.integer  "state_id"
+    t.string   "zip",            limit: 10
+    t.integer  "mobile_number",  limit: 8
+    t.integer  "office_number",  limit: 8
+    t.integer  "extension",      limit: 8
+    t.integer  "fax_number",     limit: 8
+    t.string   "gender"
+    t.string   "ethnicity"
+    t.string   "veteran_status"
+    t.datetime "created_at",                             null: false
+    t.datetime "updated_at",                             null: false
+  end
+
+  add_index "users", ["company_id"], name: "index_users_on_company_id", using: :btree
+  add_index "users", ["state_id"], name: "index_users_on_state_id", using: :btree
+
   add_foreign_key "companies", "states"
+  add_foreign_key "users", "companies"
+  add_foreign_key "users", "states"
 end
