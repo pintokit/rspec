@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160301202902) do
+ActiveRecord::Schema.define(version: 20160301203033) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,6 +22,14 @@ ActiveRecord::Schema.define(version: 20160301202902) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
+  create_table "certifications_companies", id: false, force: :cascade do |t|
+    t.integer "company_id"
+    t.integer "certification_id"
+  end
+
+  add_index "certifications_companies", ["certification_id"], name: "index_certifications_companies_on_certification_id", using: :btree
+  add_index "certifications_companies", ["company_id"], name: "index_certifications_companies_on_company_id", using: :btree
 
   create_table "companies", force: :cascade do |t|
     t.string   "name",                                limit: 50
@@ -47,6 +55,14 @@ ActiveRecord::Schema.define(version: 20160301202902) do
   end
 
   add_index "companies", ["state_id"], name: "index_companies_on_state_id", using: :btree
+
+  create_table "company_industries", id: false, force: :cascade do |t|
+    t.integer "company_id"
+    t.integer "industry_id"
+  end
+
+  add_index "company_industries", ["company_id"], name: "index_company_industries_on_company_id", using: :btree
+  add_index "company_industries", ["industry_id"], name: "index_company_industries_on_industry_id", using: :btree
 
   create_table "industries", force: :cascade do |t|
     t.string   "name"
@@ -87,6 +103,8 @@ ActiveRecord::Schema.define(version: 20160301202902) do
   add_index "users", ["state_id"], name: "index_users_on_state_id", using: :btree
 
   add_foreign_key "companies", "states"
+  add_foreign_key "company_industries", "companies"
+  add_foreign_key "company_industries", "industries"
   add_foreign_key "users", "companies"
   add_foreign_key "users", "states"
 end
