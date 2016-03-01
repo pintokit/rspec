@@ -1,0 +1,89 @@
+<%= form_for(@company) do |f| %>
+  <% if @company.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@company.errors.count, "error") %> prohibited this company from being saved:</h2>
+
+      <ul>
+      <% @company.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :address_1 %><br>
+    <%= f.text_field :address_1 %>
+  </div>
+  <div class="field">
+    <%= f.label :address_2 %><br>
+    <%= f.text_field :address_2 %>
+  </div>
+  <div class="field">
+    <%= f.label :city %><br>
+    <%= f.text_field :city %>
+  </div>
+  <div class="field">
+    <%= f.label :state_id %><br>
+    <%= f.text_field :state_id %>
+  </div>
+  <div class="field">
+    <%= f.label :zip %><br>
+    <%= f.text_field :zip %>
+  </div>
+  <div class="field">
+    <%= f.label :business_structure %><br>
+    <%= f.text_field :business_structure %>
+  </div>
+  <div class="field">
+    <%= f.label :year_established %><br>
+    <%= f.number_field :year_established %>
+  </div>
+  <div class="field">
+    <%= f.label :number_of_employees %><br>
+    <%= f.number_field :number_of_employees %>
+  </div>
+  <div class="field">
+    <%= f.label :last_year_sales %><br>
+    <%= f.text_field :last_year_sales %>
+  </div>
+  <div class="field">
+    <%= f.label :counties %><br>
+    <%= f.text_area :counties %>
+  </div>
+  <div class="field">
+    <%= f.label :general_liability_insurance_amount %><br>
+    <%= f.text_field :general_liability_insurance_amount %>
+  </div>
+  <div class="field">
+    <%= f.label :contract_dollars_level_interest_min %><br>
+    <%= f.text_field :contract_dollars_level_interest_min %>
+  </div>
+  <div class="field">
+    <%= f.label :contract_dollars_level_interest_max %><br>
+    <%= f.text_field :contract_dollars_level_interest_max %>
+  </div>
+  <div class="field">
+    <%= f.label :nature_of_business %><br>
+    <%= f.text_area :nature_of_business %>
+  </div>
+  <div class="field">
+    <%= f.label :is_union_contractor %><br>
+    <%= f.check_box :is_union_contractor %>
+  </div>
+  <div class="field">
+    <%= f.label :bonding_capacity %><br>
+    <%= f.text_field :bonding_capacity %>
+  </div>
+  <div class="field">
+    <%= f.label :type_of_construction %><br>
+    <%= f.text_field :type_of_construction %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

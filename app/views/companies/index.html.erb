@@ -1,0 +1,61 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Companies</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Address 1</th>
+      <th>Address 2</th>
+      <th>City</th>
+      <th>State</th>
+      <th>Zip</th>
+      <th>Business structure</th>
+      <th>Year established</th>
+      <th>Number of employees</th>
+      <th>Last year sales</th>
+      <th>Counties</th>
+      <th>General liability insurance amount</th>
+      <th>Contract dollars level interest min</th>
+      <th>Contract dollars level interest max</th>
+      <th>Nature of business</th>
+      <th>Is union contractor</th>
+      <th>Bonding capacity</th>
+      <th>Type of construction</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @companies.each do |company| %>
+      <tr>
+        <td><%= company.name %></td>
+        <td><%= company.address_1 %></td>
+        <td><%= company.address_2 %></td>
+        <td><%= company.city %></td>
+        <td><%= company.state %></td>
+        <td><%= company.zip %></td>
+        <td><%= company.business_structure %></td>
+        <td><%= company.year_established %></td>
+        <td><%= company.number_of_employees %></td>
+        <td><%= company.last_year_sales %></td>
+        <td><%= company.counties %></td>
+        <td><%= company.general_liability_insurance_amount %></td>
+        <td><%= company.contract_dollars_level_interest_min %></td>
+        <td><%= company.contract_dollars_level_interest_max %></td>
+        <td><%= company.nature_of_business %></td>
+        <td><%= company.is_union_contractor %></td>
+        <td><%= company.bonding_capacity %></td>
+        <td><%= company.type_of_construction %></td>
+        <td><%= link_to 'Show', company %></td>
+        <td><%= link_to 'Edit', edit_company_path(company) %></td>
+        <td><%= link_to 'Destroy', company, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Company', new_company_path %>

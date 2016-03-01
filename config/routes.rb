@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :companies
+  resources :certifications
   resources :states
   resources :industries
   # The priority is based upon order of creation: first created -> highest priority.
