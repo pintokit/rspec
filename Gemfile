@@ -28,6 +28,7 @@ gem 'rspec-rails', '>= 3.4', groups: [:development, :test]
 gem 'activejob', '>= 4.2.5.1'
 gem 'sidekiq', '>= 3.2.5'
 gem 'sinatra', '>= 1.4.7'
+gem 'devise', '>= 3.5.6'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
