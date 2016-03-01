@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Opportunity:</strong>
+  <%= @bid.opportunity %>
+</p>
+
+<p>
+  <strong>Is interested:</strong>
+  <%= @bid.is_interested %>
+</p>
+
+<p>
+  <strong>Is unsure:</strong>
+  <%= @bid.is_unsure %>
+</p>
+
+<p>
+  <strong>Company:</strong>
+  <%= @bid.company %>
+</p>
+
+<p>
+  <strong>Able to complete:</strong>
+  <%= @bid.able_to_complete %>
+</p>
+
+<p>
+  <strong>No bid reasons:</strong>
+  <%= @bid.no_bid_reasons %>
+</p>
+
+<p>
+  <strong>Need assistance:</strong>
+  <%= @bid.need_assistance %>
+</p>
+
+<%= link_to 'Edit', edit_bid_path(@bid) %> |
+<%= link_to 'Back', bids_path %>
