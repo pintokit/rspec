@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160301203033) do
+ActiveRecord::Schema.define(version: 20160301203115) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -30,6 +30,19 @@ ActiveRecord::Schema.define(version: 20160301203033) do
 
   add_index "certifications_companies", ["certification_id"], name: "index_certifications_companies_on_certification_id", using: :btree
   add_index "certifications_companies", ["company_id"], name: "index_certifications_companies_on_company_id", using: :btree
+
+  create_table "clients", force: :cascade do |t|
+    t.string   "name",       limit: 50
+    t.string   "address_1",  limit: 100
+    t.string   "address_2",  limit: 50
+    t.string   "city"
+    t.integer  "state_id"
+    t.string   "zip",        limit: 10
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
+
+  add_index "clients", ["state_id"], name: "index_clients_on_state_id", using: :btree
 
   create_table "companies", force: :cascade do |t|
     t.string   "name",                                limit: 50
@@ -102,6 +115,7 @@ ActiveRecord::Schema.define(version: 20160301203033) do
   add_index "users", ["company_id"], name: "index_users_on_company_id", using: :btree
   add_index "users", ["state_id"], name: "index_users_on_state_id", using: :btree
 
+  add_foreign_key "clients", "states"
   add_foreign_key "companies", "states"
   add_foreign_key "company_industries", "companies"
   add_foreign_key "company_industries", "industries"
