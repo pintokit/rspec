@@ -18,14 +18,14 @@ ActiveRecord::Schema.define(version: 20160315010548) do
 
   create_table "bids", force: :cascade do |t|
     t.integer  "opportunity_id"
+    t.integer  "company_id"
     t.boolean  "is_interested"
     t.boolean  "is_unsure"
-    t.integer  "company_id"
     t.string   "reason_unsure"
+    t.string   "decline_reasons"
     t.string   "need_assistance_1"
     t.string   "need_assistance_2"
     t.string   "able_to_complete"
-    t.string   "decline_reasons"
     t.datetime "contacted"
     t.string   "employee_notes"
     t.datetime "created_at",        null: false
@@ -49,6 +49,14 @@ ActiveRecord::Schema.define(version: 20160315010548) do
 
   add_index "certifications_companies", ["certification_id"], name: "index_certifications_companies_on_certification_id", using: :btree
   add_index "certifications_companies", ["company_id"], name: "index_certifications_companies_on_company_id", using: :btree
+
+  create_table "certifications_opportunities", id: false, force: :cascade do |t|
+    t.integer "opportunity_id"
+    t.integer "certification_id"
+  end
+
+  add_index "certifications_opportunities", ["certification_id"], name: "index_certifications_opportunities_on_certification_id", using: :btree
+  add_index "certifications_opportunities", ["opportunity_id"], name: "index_certifications_opportunities_on_opportunity_id", using: :btree
 
   create_table "clients", force: :cascade do |t|
     t.string   "name",       limit: 50
@@ -105,9 +113,7 @@ ActiveRecord::Schema.define(version: 20160315010548) do
   add_index "company_industries", ["industry_id"], name: "index_company_industries_on_industry_id", using: :btree
 
   create_table "industries", force: :cascade do |t|
-    t.string   "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string "name"
   end
 
   create_table "opportunities", force: :cascade do |t|

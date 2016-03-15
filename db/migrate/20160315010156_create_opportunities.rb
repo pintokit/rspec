@@ -19,10 +19,15 @@ class CreateOpportunities < ActiveRecord::Migration
 
       t.timestamps null: false
     end
-    
+
     create_table :companies_opportunities, id: false do |t|
       t.belongs_to :company, index: true
       t.belongs_to :opportunity, index: true
+    end
+
+    create_table :certifications_opportunities, id: false do |t|
+      t.belongs_to :opportunity, index: true
+      t.belongs_to :certification, index: true
     end
   end
 end
