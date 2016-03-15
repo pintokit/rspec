@@ -1,6 +1,4 @@
 Rails.application.routes.draw do
-  resources :bids
-  resources :opportunities
   resources :clients
   resources :users
   resources :companies

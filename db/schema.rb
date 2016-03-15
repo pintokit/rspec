@@ -11,25 +11,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160301203643) do
+ActiveRecord::Schema.define(version: 20160301203115) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-
-  create_table "bids", force: :cascade do |t|
-    t.integer  "opportunity_id"
-    t.boolean  "is_interested"
-    t.boolean  "is_unsure"
-    t.integer  "company_id"
-    t.string   "able_to_complete"
-    t.string   "no_bid_reasons"
-    t.string   "need_assistance"
-    t.datetime "created_at",       null: false
-    t.datetime "updated_at",       null: false
-  end
-
-  add_index "bids", ["company_id"], name: "index_bids_on_company_id", using: :btree
-  add_index "bids", ["opportunity_id"], name: "index_bids_on_opportunity_id", using: :btree
 
   create_table "certifications", force: :cascade do |t|
     t.string   "name"
@@ -45,14 +30,6 @@ ActiveRecord::Schema.define(version: 20160301203643) do
 
   add_index "certifications_companies", ["certification_id"], name: "index_certifications_companies_on_certification_id", using: :btree
   add_index "certifications_companies", ["company_id"], name: "index_certifications_companies_on_company_id", using: :btree
-
-  create_table "certifications_opportunities", id: false, force: :cascade do |t|
-    t.integer "opportunity_id"
-    t.integer "certification_id"
-  end
-
-  add_index "certifications_opportunities", ["certification_id"], name: "index_certifications_opportunities_on_certification_id", using: :btree
-  add_index "certifications_opportunities", ["opportunity_id"], name: "index_certifications_opportunities_on_opportunity_id", using: :btree
 
   create_table "clients", force: :cascade do |t|
     t.string   "name",       limit: 50
@@ -92,16 +69,6 @@ ActiveRecord::Schema.define(version: 20160301203643) do
 
   add_index "companies", ["state_id"], name: "index_companies_on_state_id", using: :btree
 
-  create_table "companies_opportunities", force: :cascade do |t|
-    t.integer  "company_id"
-    t.integer  "opportunity_id"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
-  end
-
-  add_index "companies_opportunities", ["company_id"], name: "index_companies_opportunities_on_company_id", using: :btree
-  add_index "companies_opportunities", ["opportunity_id"], name: "index_companies_opportunities_on_opportunity_id", using: :btree
-
   create_table "company_industries", id: false, force: :cascade do |t|
     t.integer "company_id"
     t.integer "industry_id"
@@ -115,29 +82,6 @@ ActiveRecord::Schema.define(version: 20160301203643) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
-
-  create_table "opportunities", force: :cascade do |t|
-    t.integer  "client_id"
-    t.string   "project_name"
-    t.string   "project_owner"
-    t.boolean  "union_contract"
-    t.string   "city"
-    t.integer  "state_id"
-    t.string   "contact_name"
-    t.integer  "contact_phone",       limit: 8
-    t.integer  "contact_fax",         limit: 8
-    t.string   "contact_email"
-    t.datetime "bid_date"
-    t.text     "trades_solicited"
-    t.text     "project_description"
-    t.text     "bid_instructions"
-    t.string   "project_url"
-    t.datetime "created_at",                    null: false
-    t.datetime "updated_at",                    null: false
-  end
-
-  add_index "opportunities", ["client_id"], name: "index_opportunities_on_client_id", using: :btree
-  add_index "opportunities", ["state_id"], name: "index_opportunities_on_state_id", using: :btree
 
   create_table "states", force: :cascade do |t|
     t.string   "name",       limit: 14
@@ -171,16 +115,10 @@ ActiveRecord::Schema.define(version: 20160301203643) do
   add_index "users", ["company_id"], name: "index_users_on_company_id", using: :btree
   add_index "users", ["state_id"], name: "index_users_on_state_id", using: :btree
 
-  add_foreign_key "bids", "companies"
-  add_foreign_key "bids", "opportunities"
   add_foreign_key "clients", "states"
   add_foreign_key "companies", "states"
-  add_foreign_key "companies_opportunities", "companies"
-  add_foreign_key "companies_opportunities", "opportunities"
   add_foreign_key "company_industries", "companies"
   add_foreign_key "company_industries", "industries"
-  add_foreign_key "opportunities", "clients"
-  add_foreign_key "opportunities", "states"
   add_foreign_key "users", "companies"
   add_foreign_key "users", "states"
 end
