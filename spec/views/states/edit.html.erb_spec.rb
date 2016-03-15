@@ -3,9 +3,9 @@ require 'rails_helper'
 RSpec.describe "states/edit", type: :view do
   before(:each) do
     @state = assign(:state, State.create!(
-      :name => "MyString",
+      :name => "California",
       :region => "MyString",
-      :acronym => "MyString"
+      :acronym => "CA"
     ))
   end
 
