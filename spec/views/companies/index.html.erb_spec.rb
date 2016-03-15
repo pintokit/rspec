@@ -5,6 +5,7 @@ RSpec.describe "companies/index", type: :view do
     assign(:companies, [
       Company.create!(
         :name => "Name",
+        :entity_number => "Entity Number",
         :address_1 => "Address 1",
         :address_2 => "Address 2",
         :city => "City",
@@ -25,6 +26,7 @@ RSpec.describe "companies/index", type: :view do
       ),
       Company.create!(
         :name => "Name",
+        :entity_number => "Entity Number",
         :address_1 => "Address 1",
         :address_2 => "Address 2",
         :city => "City",
@@ -49,6 +51,7 @@ RSpec.describe "companies/index", type: :view do
   it "renders a list of companies" do
     render
     assert_select "tr>td", :text => "Name".to_s, :count => 2
+    assert_select "tr>td", :text => "Entity Number".to_s, :count => 2
     assert_select "tr>td", :text => "Address 1".to_s, :count => 2
     assert_select "tr>td", :text => "Address 2".to_s, :count => 2
     assert_select "tr>td", :text => "City".to_s, :count => 2

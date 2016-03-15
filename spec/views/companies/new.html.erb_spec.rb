@@ -4,6 +4,7 @@ RSpec.describe "companies/new", type: :view do
   before(:each) do
     assign(:company, Company.new(
       :name => "MyString",
+      :entity_number => "MyString",
       :address_1 => "MyString",
       :address_2 => "MyString",
       :city => "MyString",
@@ -30,6 +31,8 @@ RSpec.describe "companies/new", type: :view do
     assert_select "form[action=?][method=?]", companies_path, "post" do
 
       assert_select "input#company_name[name=?]", "company[name]"
+
+      assert_select "input#company_entity_number[name=?]", "company[entity_number]"
 
       assert_select "input#company_address_1[name=?]", "company[address_1]"
 

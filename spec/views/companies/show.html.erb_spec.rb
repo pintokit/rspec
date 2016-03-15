@@ -4,6 +4,7 @@ RSpec.describe "companies/show", type: :view do
   before(:each) do
     @company = assign(:company, Company.create!(
       :name => "Name",
+      :entity_number => "Entity Number",
       :address_1 => "Address 1",
       :address_2 => "Address 2",
       :city => "City",
@@ -27,6 +28,7 @@ RSpec.describe "companies/show", type: :view do
   it "renders attributes in <p>" do
     render
     expect(rendered).to match(/Name/)
+    expect(rendered).to match(/Entity Number/)
     expect(rendered).to match(/Address 1/)
     expect(rendered).to match(/Address 2/)
     expect(rendered).to match(/City/)

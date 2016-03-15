@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160315010548) do
+ActiveRecord::Schema.define(version: 20160315011136) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -73,6 +73,7 @@ ActiveRecord::Schema.define(version: 20160315010548) do
 
   create_table "companies", force: :cascade do |t|
     t.string   "name",                                limit: 50
+    t.string   "entity_number",                       limit: 50
     t.string   "address_1",                           limit: 100
     t.string   "address_2",                           limit: 50
     t.string   "city"
@@ -138,6 +139,19 @@ ActiveRecord::Schema.define(version: 20160315010548) do
 
   add_index "opportunities", ["client_id"], name: "index_opportunities_on_client_id", using: :btree
   add_index "opportunities", ["state_id"], name: "index_opportunities_on_state_id", using: :btree
+
+  create_table "roles", force: :cascade do |t|
+    t.string "name"
+    t.string "description"
+  end
+
+  create_table "roles_users", id: false, force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "role_id"
+  end
+
+  add_index "roles_users", ["role_id"], name: "index_roles_users_on_role_id", using: :btree
+  add_index "roles_users", ["user_id"], name: "index_roles_users_on_user_id", using: :btree
 
   create_table "states", force: :cascade do |t|
     t.string   "name",       limit: 14

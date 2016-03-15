@@ -2,6 +2,7 @@ class CreateCompanies < ActiveRecord::Migration
   def change
     create_table :companies do |t|
       t.string :name, limit: 50
+      t.string :entity_number, limit: 50
       t.string :address_1, limit: 100
       t.string :address_2, limit: 50
       t.string :city
