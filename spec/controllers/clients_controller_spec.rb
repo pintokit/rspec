@@ -24,7 +24,7 @@ RSpec.describe ClientsController, type: :controller do
   # Client. As you add validations to Client, be sure to
   # adjust the attributes here as well.
   let(:valid_attributes) {
-    skip("Add a hash of attributes valid for your model")
+    {name: 'Apple', address_1: '1 Infinite Loop', address_2: '', city: 'Cupertino', zip: '94103'}
   }
 
   let(:invalid_attributes) {

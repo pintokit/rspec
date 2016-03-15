@@ -24,7 +24,7 @@ RSpec.describe IndustriesController, type: :controller do
   # Industry. As you add validations to Industry, be sure to
   # adjust the attributes here as well.
   let(:valid_attributes) {
-    skip("Add a hash of attributes valid for your model")
+    {name: 'Technology Sector'}
   }
 
   let(:invalid_attributes) {

@@ -24,7 +24,7 @@ RSpec.describe CertificationsController, type: :controller do
   # Certification. As you add validations to Certification, be sure to
   # adjust the attributes here as well.
   let(:valid_attributes) {
-    skip("Add a hash of attributes valid for your model")
+    {name: 'Small Business Enterprise', acronym: 'SBE'}
   }
 
   let(:invalid_attributes) {

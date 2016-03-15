@@ -24,7 +24,17 @@ RSpec.describe CompaniesController, type: :controller do
   # Company. As you add validations to Company, be sure to
   # adjust the attributes here as well.
   let(:valid_attributes) {
-    skip("Add a hash of attributes valid for your model")
+    {
+      id: 1,
+      name: 'Peaking',
+      address_1: '18 10th Street',
+      address_2: 'Unit 1230',
+      city: 'San Francisco',
+      zip: '94103',
+      business_structure: 'Sole Proprietorship',
+      year_established: '2014',
+      number_of_employees: 2,
+      last_year_sales: 60000, counties: 'SF County', general_liability_insurance_amount: 1223, contract_dollars_level_interest_min: 1000, contract_dollars_level_interest_max: 6000, nature_of_business: 'I build software', is_union_contractor: false, bonding_capacity: 500}
   }
 
   let(:invalid_attributes) {

@@ -24,7 +24,7 @@ RSpec.describe BidsController, type: :controller do
   # Bid. As you add validations to Bid, be sure to
   # adjust the attributes here as well.
   let(:valid_attributes) {
-    skip("Add a hash of attributes valid for your model")
+    {is_interested: false, is_unsure: true, reason_unsure: 'DFJDLKJFK', need_assistance_1: 'hello', need_assistance_2: '', able_to_complete: '', decline_reasons: '', contacted: Time.now, employee_notes: ''}
   }
 
   let(:invalid_attributes) {

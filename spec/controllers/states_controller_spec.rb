@@ -24,7 +24,7 @@ RSpec.describe StatesController, type: :controller do
   # State. As you add validations to State, be sure to
   # adjust the attributes here as well.
   let(:valid_attributes) {
-    skip("Add a hash of attributes valid for your model")
+    {name: 'California', region: 'West', acronym: 'CA'}
   }
 
   let(:invalid_attributes) {
