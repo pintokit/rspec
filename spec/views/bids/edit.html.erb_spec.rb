@@ -3,10 +3,10 @@ require 'rails_helper'
 RSpec.describe "bids/edit", type: :view do
   before(:each) do
     @bid = assign(:bid, Bid.create!(
-      :opportunity => nil,
+      :opportunity => @opportunity_1,
       :is_interested => false,
       :is_unsure => false,
-      :company => nil,
+      :company => @company_1,
       :reason_unsure => "MyString",
       :need_assistance_1 => "MyString",
       :need_assistance_2 => "MyString",

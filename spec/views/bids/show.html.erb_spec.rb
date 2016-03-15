@@ -3,10 +3,10 @@ require 'rails_helper'
 RSpec.describe "bids/show", type: :view do
   before(:each) do
     @bid = assign(:bid, Bid.create!(
-      :opportunity => nil,
+      :opportunity => @opportunity_1,
       :is_interested => false,
       :is_unsure => false,
-      :company => nil,
+      :company => @company_1,
       :reason_unsure => "Reason Unsure",
       :need_assistance_1 => "Need Assistance 1",
       :need_assistance_2 => "Need Assistance 2",
@@ -18,10 +18,10 @@ RSpec.describe "bids/show", type: :view do
 
   it "renders attributes in <p>" do
     render
-    expect(rendered).to match(//)
+    expect(rendered).to match(/Opportunity/)
     expect(rendered).to match(/false/)
     expect(rendered).to match(/false/)
-    expect(rendered).to match(//)
+    expect(rendered).to match(/Company/)
     expect(rendered).to match(/Reason Unsure/)
     expect(rendered).to match(/Need Assistance 1/)
     expect(rendered).to match(/Need Assistance 2/)
