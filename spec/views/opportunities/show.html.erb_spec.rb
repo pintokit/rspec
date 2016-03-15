@@ -3,12 +3,12 @@ require 'rails_helper'
 RSpec.describe "opportunities/show", type: :view do
   before(:each) do
     @opportunity = assign(:opportunity, Opportunity.create!(
-      :client => nil,
+      :client => @client_1,
       :project_name => "Project Name",
       :project_owner => "Project Owner",
       :union_contract => false,
       :city => "City",
-      :state => nil,
+      :state => @state_1,
       :contact_name => "Contact Name",
       :contact_phone => 1,
       :contact_fax => 2,
@@ -22,7 +22,7 @@ RSpec.describe "opportunities/show", type: :view do
 
   it "renders attributes in <p>" do
     render
-    expect(rendered).to match(//)
+    expect(rendered).to match(/Client/)
     expect(rendered).to match(/Project Name/)
     expect(rendered).to match(/Project Owner/)
     expect(rendered).to match(/false/)

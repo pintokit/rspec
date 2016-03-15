@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe "opportunities/edit", type: :view do
   before(:each) do
     @opportunity = assign(:opportunity, Opportunity.create!(
-      :client => nil,
+      :client => @client_1,
       :project_name => "MyString",
       :project_owner => "MyString",
       :union_contract => false,
