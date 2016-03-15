@@ -2,8 +2,9 @@ require 'rails_helper'
 
 RSpec.describe "users/edit", type: :view do
   before(:each) do
+    @company_1 = Company.new(id: 1)
     @user = assign(:user, User.create!(
-      :company => nil,
+      :company => @company_1,
       :first_name => "MyString",
       :last_name => "MyString",
       :title => "MyString",

@@ -2,8 +2,9 @@ require 'rails_helper'
 
 RSpec.describe "users/show", type: :view do
   before(:each) do
+    company = Company.new
     @user = assign(:user, User.create!(
-      :company => nil,
+      :company => company,
       :first_name => "First Name",
       :last_name => "Last Name",
       :title => "Title",
@@ -24,7 +25,7 @@ RSpec.describe "users/show", type: :view do
 
   it "renders attributes in <p>" do
     render
-    expect(rendered).to match(//)
+    expect(rendered).to match(/Company/)
     expect(rendered).to match(/First Name/)
     expect(rendered).to match(/Last Name/)
     expect(rendered).to match(/Title/)

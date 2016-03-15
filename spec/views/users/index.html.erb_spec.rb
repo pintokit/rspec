@@ -2,9 +2,11 @@ require 'rails_helper'
 
 RSpec.describe "users/index", type: :view do
   before(:each) do
+    @company_1 = Company.new(id: 1)
+    @company_2 = Company.new(id: 2)
     assign(:users, [
       User.create!(
-        :company => nil,
+        :company => @company_1,
         :first_name => "First Name",
         :last_name => "Last Name",
         :title => "Title",
@@ -13,16 +15,16 @@ RSpec.describe "users/index", type: :view do
         :city => "City",
         :state => nil,
         :zip => "Zip",
-        :mobile_number => 1,
-        :office_number => 2,
-        :extension => "Extension",
-        :fax_number => 3,
+        :mobile_number => 3,
+        :office_number => 4,
+        :extension => 5,
+        :fax_number => 6,
         :gender => "Gender",
         :ethnicity => "Ethnicity",
         :veteran_status => "Veteran Status"
       ),
       User.create!(
-        :company => nil,
+        :company => @company_2,
         :first_name => "First Name",
         :last_name => "Last Name",
         :title => "Title",
@@ -31,10 +33,10 @@ RSpec.describe "users/index", type: :view do
         :city => "City",
         :state => nil,
         :zip => "Zip",
-        :mobile_number => 1,
-        :office_number => 2,
-        :extension => "Extension",
-        :fax_number => 3,
+        :mobile_number => 3,
+        :office_number => 4,
+        :extension => 5,
+        :fax_number => 6,
         :gender => "Gender",
         :ethnicity => "Ethnicity",
         :veteran_status => "Veteran Status"
@@ -44,7 +46,8 @@ RSpec.describe "users/index", type: :view do
 
   it "renders a list of users" do
     render
-    assert_select "tr>td", :text => nil.to_s, :count => 2
+    assert_select "tr>td", :text => @company_1.to_s, :count => 1
+    assert_select "tr>td", :text => @company_2.to_s, :count => 1
     assert_select "tr>td", :text => "First Name".to_s, :count => 2
     assert_select "tr>td", :text => "Last Name".to_s, :count => 2
     assert_select "tr>td", :text => "Title".to_s, :count => 2
@@ -53,10 +56,10 @@ RSpec.describe "users/index", type: :view do
     assert_select "tr>td", :text => "City".to_s, :count => 2
     assert_select "tr>td", :text => nil.to_s, :count => 2
     assert_select "tr>td", :text => "Zip".to_s, :count => 2
-    assert_select "tr>td", :text => 1.to_s, :count => 2
-    assert_select "tr>td", :text => 2.to_s, :count => 2
-    assert_select "tr>td", :text => "Extension".to_s, :count => 2
     assert_select "tr>td", :text => 3.to_s, :count => 2
+    assert_select "tr>td", :text => 4.to_s, :count => 2
+    assert_select "tr>td", :text => 5.to_s, :count => 2
+    assert_select "tr>td", :text => 6.to_s, :count => 2
     assert_select "tr>td", :text => "Gender".to_s, :count => 2
     assert_select "tr>td", :text => "Ethnicity".to_s, :count => 2
     assert_select "tr>td", :text => "Veteran Status".to_s, :count => 2
