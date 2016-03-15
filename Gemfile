@@ -2,14 +2,14 @@ source 'https://rubygems.org'
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.2.5.2'
+gem 'rails', '4.2.5'
 # Use postgresql as the database for Active Record
-gem 'pg', '~> 0.15'
-gem 'puma', '>= 2.15.3'
+gem 'pg', '~> 0.18.4'
+gem 'puma', '3.0'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
-gem 'uglifier', '>= 1.3.0'
+gem 'uglifier', '~> 2.7.2'
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.1.0'
 # See https://github.com/rails/execjs#readme for more supported runtimes
@@ -24,11 +24,14 @@ gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0', group: :doc
 
-gem 'rspec-rails', '>= 3.4', groups: [:development, :test]
-gem 'activejob', '>= 4.2.5.1'
-gem 'sidekiq', '>= 3.2.5'
-gem 'sinatra', '>= 1.4.7'
-gem 'devise', '>= 3.5.6'
+gem 'rspec-rails', groups: [:development, :test]
+gem 'activejob', '4.2.5'
+gem 'sidekiq', '~> 4.1.1'
+gem 'sinatra', '~> 1.4.7'
+gem 'devise', '~> 3.5.6'
+
+# Sets Rails to log to stdout, prints SQL queries
+gem 'rails_stdout_logging', '0.0.3'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
