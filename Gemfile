@@ -26,7 +26,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 gem 'rspec-rails', groups: [:development, :test]
 gem 'activejob', '4.2.5'
-gem 'sidekiq', '~> 4.1.1'
+gem 'sidekiq', '~> 5.2.0'
 gem 'sinatra', '~> 1.4.7'
 gem 'devise', '~> 3.5.6'
 
